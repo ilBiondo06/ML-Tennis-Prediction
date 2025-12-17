@@ -206,22 +206,43 @@ def calculate_features(df, initial_elos, initial_matches):
 # ---------------------------------------------------------
 
 def transform_to_ml_format(df):
-    print("Trasformazione finale per ML (Calcolo Differenze)...")
+    print("Trasformazione finale per ML (Random Swap, Diffs & Encoding)...")
     
-    # Lista colonne base da mantenere
+    # SELEZIONE COLONNE
     cols_base = [
-        'tourney_date', 'surface', 'tourney_level', 'round', 'match_num', 'best_of', # Aggiunto BEST_OF
+        'tourney_date', 'match_num', 'best_of', 
         'winner_id', 'winner_name', 'winner_rank', 'winner_rank_points', 'winner_age', 'winner_hand', 'winner_ht', 
         'loser_id', 'loser_name', 'loser_rank', 'loser_rank_points', 'loser_age', 'loser_hand', 'loser_ht'
     ]
     
-    # Aggiungiamo tutte le feature calcolate (quelle che iniziano con w_ o l_)
-    # w_elo, l_elo, w_win_last_5, l_win_last_5, etc...
+    # Colonne categoriche da trasformare
+    cat_cols = ['surface', 'round', 'tourney_level']
+    
+    # Feature calcolate
     calc_cols = [c for c in df.columns if c.startswith('w_') or c.startswith('l_')]
     
-    df_ml = df[cols_base + calc_cols].copy()
+    # Uniamo tutto
+    df_ml = df[cols_base + cat_cols + calc_cols].copy()
     
-    # Rinomina Winner -> p1, Loser -> p2
+    # --- A. ENCODING VARIABILI CATEGORICHE ---
+    
+    # Superficie (One-Hot Encoding)
+    df_ml['surface_Hard'] = (df_ml['surface'] == 'Hard').astype(int)
+    df_ml['surface_Clay'] = (df_ml['surface'] == 'Clay').astype(int)
+    df_ml['surface_Grass'] = (df_ml['surface'] == 'Grass').astype(int)
+    df_ml['surface_Carpet'] = (df_ml['surface'] == 'Carpet').astype(int) 
+    
+    # Turno (Ordinal Encoding)
+    round_map = {
+        'R128': 1, 'RR': 1, 
+        'R64': 2, 'R32': 3, 'R16': 4, 'QF': 5, 'SF': 6, 'F': 7
+    }
+    df_ml['round_num'] = df_ml['round'].map(round_map).fillna(1).astype(int)
+    
+    # Rimuoviamo le colonne originali stringa
+    df_ml = df_ml.drop(columns=['surface', 'round', 'tourney_level'])
+
+    # --- B. RINOMINA GENERICA (Winner -> P1, Loser -> P2) ---
     rename_map = {}
     for c in df_ml.columns:
         if c.startswith('winner') or c.startswith('w_'):
@@ -230,50 +251,45 @@ def transform_to_ml_format(df):
             rename_map[c] = c.replace('loser', 'p2').replace('l_', 'p2_')
     df_ml = df_ml.rename(columns=rename_map)
     
+    # Inizialmente P1 è sempre il vincitore
     df_ml['target'] = 1 
     
-    # --- RANDOM SWAP ---
+    # --- 4. RANDOM SWAP ---
+    np.random.seed(42)
     mask = np.random.rand(len(df_ml)) < 0.5
+    
     p1_cols = [c for c in df_ml.columns if 'p1' in c]
     for c1 in p1_cols:
         c2 = c1.replace('p1', 'p2')
         if c2 in df_ml.columns:
             df_ml.loc[mask, [c1, c2]] = df_ml.loc[mask, [c2, c1]].values
+            
     df_ml.loc[mask, 'target'] = 0
     
-    # --- FEATURE ENGINEERING DIFFERENZIALE (Tutte le _DIFF richieste) ---
+    # --- 5. FEATURE ENGINEERING DIFFERENZIALE ---
     
-    # 1. Ranking & Punti
-    df_ml['ATP_RANK_DIFF'] = df_ml['p2_rank'] - df_ml['p1_rank'] # Positivo se P1 è meglio (Rank più basso)
+    # Mano (Ora che abbiamo p1_hand e p2_hand scambiati correttamente)
+    df_ml['p1_is_left'] = (df_ml['p1_hand'] == 'L').astype(int)
+    df_ml['p2_is_left'] = (df_ml['p2_hand'] == 'L').astype(int)
+    
+    # Differenziali
+    df_ml['ATP_RANK_DIFF'] = df_ml['p2_rank'] - df_ml['p1_rank'] 
     df_ml['ATP_POINT_DIFF'] = df_ml['p1_rank_points'] - df_ml['p2_rank_points']
-    
-    # 2. ELO
     df_ml['DIFF_ELO'] = df_ml['p1_elo'] - df_ml['p2_elo']
-    
-    # 3. Esperienza (N Games)
     df_ml['DIFF_N_GAMES'] = df_ml['p1_matches_played'] - df_ml['p2_matches_played']
     
-    # 4. Win % Last X (Forma)
     for x in [5, 25, 50, 100]:
         c1, c2 = f'p1_win_last_{x}', f'p2_win_last_{x}'
         df_ml[f'WIN_LAST_{x}_DIFF'] = df_ml[c1] - df_ml[c2]
         
-    # 5. ELO Gradients (Trend)
     for x in [20, 35, 50, 100]:
         c1, c2 = f'p1_elo_grad_{x}', f'p2_elo_grad_{x}'
         df_ml[f'ELO_GRAD_{x}_DIFF'] = df_ml[c1] - df_ml[c2]
         
-    # 6. Altro
     df_ml['diff_age'] = df_ml['p1_age'] - df_ml['p2_age']
     df_ml['diff_ht'] = df_ml['p1_ht'] - df_ml['p2_ht']
-    df_ml['p1_is_left'] = (df_ml['p1_hand'] == 'L').astype(int)
-    df_ml['p2_is_left'] = (df_ml['p2_hand'] == 'L').astype(int)
-    
-    # Pulizia finale (BEST_OF è già presente come colonna, la rinominiamo per consistenza se vuoi)
-    # df_ml['BEST_OF'] = df_ml['best_of'] 
     
     return df_ml
-
 # ---------------------------------------------------------
 # MAIN
 # ---------------------------------------------------------
