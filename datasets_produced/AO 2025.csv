@@ -1,0 +1,129 @@
+p1_name;p2_name;round_num;target 
+Jannik Sinner;Nicolas Jarry;1;1
+Tristan Schoolkate;Taro Daniel;1;1
+Marcos Giron;Yannick Hanfmann;1;1
+Tomas Martin Etcheverry;Flavio Cobolli;1;1
+Hubert Hurkacz;Tallon Griekspoor;1;1
+Miomir Kecmanovic;Dusan Lajovic;1;1
+Matteo Berrettini;Cameron Norrie;1;1
+Zhizhen Zhang;Holger Rune;1;0
+Stefanos Tsitsipas;Alex Michelsen;1;0
+James Mccabe;Martin Landaluce;1;1
+Gabriel Diallo;Luca Nardi;1;1
+Adrian Mannarino;Karen Khachanov;1;0
+Francisco Cerundolo;Alexander Bublik;1;1
+Facundo Diaz Acosta;Zizou Bergs;1;1
+Tristan Boyer;Federico Coria;1;1
+Botic Van De Zandschulp;Alex De Minaur;1;0
+Taylor Fritz;Jenson Brooksby;1;1
+Borna Coric;Cristian Garin;1;0
+Francisco Comesana;Daniel Altmaier;1;0
+Gael Monfils;Giovanni Mpetshi Perricard;1;1
+Ben Shelton ;Brandon Nakashima;1;1
+Pablo Carreno Busta;Kamil Majchrzak;1;1
+Roberto Bautista Agut;Denis Shapovalov;1;0
+Matteo Arnaldi;Lorenzo Musetti;1;0
+Andrey Rublev;Joao Fonseca;1;0
+Lorenzo Sonego;Stan Wawrinka;1;1
+Thiago Seyboth Wild;Fabian Marozsan;1;0
+Arthur Rinderknech;Frances Tiafoe;1;0
+Alexei Popyrin;Corentin Moutet;1;0
+Rinky Hijikata;Mitchell Krueger;1;0
+Camilo Ugo Carabelli;Learner Tien;1;0
+Kasidit Samrej;Daniil Medvedev;1;0
+Novak Djokovic;Nishesh Basavareddy;1;1
+Jaime Faria;Pavel Kotov;1;1
+Gauthier Onclin;Reilly Opelka;1;0
+Sumit Nagal;Tomas Machac;1;0
+Jiri Lehecka;Li Tu;1;1
+Hugo Gaston ;Omar Jasika;1;1
+David Goffin;Benjamin Bonzi;1;0
+Francesco Passaro; Grigor Dimitrov;1;1
+Jack Draper;Mariano Navone;1;1
+Thanasi Kokkinakis;Roman Safiullin;1;1
+Damir Dzumhur;Aleksandar Vukic;1;0
+Lukas Klein;Sebastian Korda;1;0
+Jordan Thompson;Dominik Koepfer;1;1
+Alexandre Muller;Nuno Borges;1;0
+Yoshihito Nishioka;Aziz Dougaz;1;1
+Alexander Shevchenko;Carlos Alcaraz;1;0
+Casper Ruud;Jaume Munar;1;1
+Nikoloz Basilashvili;Jakub Mensik;1;0
+Juncheng Shang;Alejandro Davidovich Fokina;1;0
+Jan Lennard Struff;Felix Auger Aliassime;1;0
+Alejandro Tabilo;Roberto Carballes Baena;1;0
+James Duckworth;Dominic Stricker;1;1
+Kei Nishikori;Thiago Monteiro;1;1
+Christopher Oconnell;Tommy Paul;1;0
+Ugo Humbert;Matteo Gigante;1;1
+Hady Habib;Bu Yunchaokete;1;1
+Adam Walton;Quentin Halys;1;0
+Otto Virtanen;Arthur Fils;1;0
+Sebastian Baez;Arthur Cazaux;1;0
+Jacob Fearnley;Nick Kyrgios;1;1
+Pedro Martinez;Luciano Darderi;1;1
+Lucas Pouille;Alexander Zverev;1;0
+Jannik Sinner;Tristan Schoolkate;2;1
+Marcos Giron;Tomas Martin Etcheverry;2;1
+Hubert Hurkacz;Miomir Kecmanovic;2;0
+Matteo Berrettini;Holger Rune;2;0
+Alex Michelsen;James Mccabe;2;1
+Gabriel Diallo;Karen Khachanov;2;0
+Francisco Cerundolo;Facundo Diaz Acosta;2;1
+Tristan Boyer;Alex De Minaur;2;0
+Taylor Fritz;Cristian Garin;2;1
+Daniel Altmaier;Gael Monfils;2;0
+Ben Shelton ;Pablo Carreno Busta;2;1
+Denis Shapovalov;Lorenzo Musetti;2;0
+Joao Fonseca;Lorenzo Sonego;2;0
+Fabian Marozsan;Frances Tiafoe;2;1
+Corentin Moutet;Mitchell Krueger;2;1
+Learner Tien;Daniil Medvedev;2;1
+Novak Djokovic;Jaime Faria;2;1
+Reilly Opelka;Tomas Machac;2;0
+Jiri Lehecka;Hugo Gaston;2;1
+Benjamin Bonzi;Francesco Passaro ;2;1
+Jack Draper;Thanasi Kokkinakis;2;1
+Aleksandar Vukic;Sebastian Korda;2;1
+Jordan Thompson;Nuno Borges;2;0
+Yoshihito Nishioka;Carlos Alcaraz;2;0
+Casper Ruud;Jakub Mensik;2;0
+Alejandro Davidovich Fokina;Felix Auger Aliassime;2;1
+Roberto Carballes Baena;James Duckworth;2;1
+Kei Nishikori;Tommy Paul;2;0
+Ugo Humbert;Hady Habib;2;1
+Quentin Halys;Arthur Fils;2;0
+Arthur Cazaux;Jacob Fearnley;2;0
+Pedro Martinez;Alexander Zverev;2;0
+Jannik Sinner;Marcos Giron;3;1
+Miomir Kecmanovic;Holger Rune;3;0
+Alex Michelsen;Karen Khachanov;3;1
+Francisco Cerundolo;Alex De Minaur;3;0
+Taylor Fritz;Gael Monfils;3;0
+Ben Shelton ;Lorenzo Musetti;3;1
+Lorenzo Sonego;Fabian Marozsan;3;1
+Corentin Moutet;Learner Tien;3;0
+Novak Djokovic;Tomas Machac;3;1
+Jiri Lehecka;Benjamin Bonzi;3;1
+Jack Draper;Aleksandar Vukic;3;1
+Nuno Borges;Carlos Alcaraz;3;0
+Jakub Mensik;Alejandro Davidovich Fokina;3;0
+Roberto Carballes Baena;Tommy Paul;3;0
+Ugo Humbert;Arthur Fils;3;1
+Jacob Fearnley;Alexander Zverev;3;0
+Jannik Sinner;Holger Rune;4;1
+Alex Michelsen;Alex De Minaur;4;0
+Gael Monfils;Ben Shelton;4;0
+Lorenzo Sonego;Learner Tien;4;1
+Novak Djokovic;Jiri Lehecka;4;1
+Jack Draper;Carlos Alcaraz;4;0
+Alejandro Davidovich Fokina;Tommy Paul;4;0
+Ugo Humbert;Alexander Zverev;4;0
+Jannik Sinner;Alex De Minaur;5;1
+Ben Shelton ;Lorenzo Sonego;5;1
+Novak Djokovic;Carlos Alcaraz;5;1
+Tommy Paul ;Alexander Zverev;5;0
+Jannik Sinner;Ben Shelton;6;1
+Novak Djokovic;Alexander Zverev;6;0
+Jannik Sinner;Alexander Zverev;7;1
+;;;
